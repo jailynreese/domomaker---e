@@ -267,3 +267,11 @@ h3.domoSnack {
 .domo:last-child {
     margin-bottom:10px;
 }
+
+#intro {
+    display: flex;
+}
+
+.class {
+    width: 200px;
+}
