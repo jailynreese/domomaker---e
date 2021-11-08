@@ -273,5 +273,9 @@ h3.domoSnack {
 }
 
 .profile {
-    width: 200px;
+    width: 300px;
+}
+
+.profile img {
+    width: 50%;
 }
