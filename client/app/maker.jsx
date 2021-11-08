@@ -104,5 +104,7 @@ const getToken = () => {
 };
 
 $(document).ready(function () {
+    ReactDOM.render(<div></div>, document.querySelector("#intro")
+    );
     getToken();
 });
