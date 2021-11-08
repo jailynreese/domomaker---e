@@ -71,7 +71,7 @@ const DomoList = function (props) {
 };
 
 const intro = (domo) => {
-    //sendAjax('GET', '/getDomo', domo ,(data) => {
+    sendAjax('GET', '/getDomo', domo ,(data) => {
         ReactDOM.render(
             <div>
                 <h2>Hi, my name is {domo.name}. I am {domo.age} and I love to eat {domo.snack}!</h2>
@@ -79,7 +79,7 @@ const intro = (domo) => {
             </div>,
             document.querySelector("#intro")
         );
-   // }); 
+    }); 
 
     return false;
 }
