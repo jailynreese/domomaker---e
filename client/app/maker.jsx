@@ -55,7 +55,7 @@ const DomoList = function (props) {
                 <h3 className="domoName">Name: {domo.name} </h3>
                 <h3 className="domoAge">Age: {domo.age} </h3>
                 <h3 className="domoSnack">Snack: {domo.snack} </h3>
-                <button onClick={(e) => intro(e, domo.name, domo.age, domo.snack)}>Greet</button>
+                <button onClick={intro(domo.name, domo.age, domo.snack)}>Greet</button>
             </div>
         );
     });
@@ -67,8 +67,8 @@ const DomoList = function (props) {
     );
 };
 
-const intro = (e, domo) => {
-    e.preventDefault();
+const intro = (domo) => {
+    //e.preventDefault();
 
     //sendAjax('GET', '/getDomo', domo ,(data) => {
         ReactDOM.render(
