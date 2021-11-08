@@ -55,9 +55,12 @@ const DomoList = function (props) {
                 <h3 className="domoName">Name: {domo.name} </h3>
                 <h3 className="domoAge">Age: {domo.age} </h3>
                 <h3 className="domoSnack">Snack: {domo.snack} </h3>
-                <button onClick={(e, domo) => {
-                    e.preventDefault();
-                    intro(domo);
+                <button onClick={() => {
+                    sendAjax('GET', '/getDomos', null, (data) => {
+                        ReactDOM.render(
+                            <Intro domos={data.domos} />, document.querySelector("#domos")
+                        );
+                    });
                 }}>Greet</button>
             </div>
         );
@@ -70,8 +73,16 @@ const DomoList = function (props) {
     );
 };
 
-const intro = (domo) => {
-    //sendAjax('GET', '/getDomo', domo ,(data) => {
+const Intro = (props) => {
+    if (props.domos.length === 0) {
+        return (
+            <div className="domoList">
+                <h3 className="emptyDomo">No Domos yet</h3>
+            </div>
+        );
+    }
+
+    const DomoLineup = props.domos.map((domo) => {
         ReactDOM.render(
             <div>
                 <h2>Hi, my name is {domo.name}. I am {domo.age} and I love to eat {domo.snack}!</h2>
@@ -79,10 +90,26 @@ const intro = (domo) => {
             </div>,
             document.querySelector("#intro")
         );
-    //}); 
+    });
 
-    return false;
-}
+    return (
+        <div>{DomoLineup}</div>
+    );
+};
+
+// const intro = (props) => {
+//     sendAjax('GET', '/getDomo', domo ,(data) => {
+//         ReactDOM.render(
+//             <div>
+//                 <h2>Hi, my name is {domo.name}. I am {domo.age} and I love to eat {domo.snack}!</h2>
+//                 <img src="/assets/img/domosnake.jpeg" alt="domo with snake"/>
+//             </div>,
+//             document.querySelector("#intro")
+//         );
+//     }); 
+
+//     return false;
+// }
 
 const loadDomosFromServer = () => {
     sendAjax('GET', '/getDomos', null, (data) => {
