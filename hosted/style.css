@@ -270,6 +270,7 @@ h3.domoSnack {
 
 #intro {
     display: flex;
+    flex-direction: row;
 }
 
 .profile {
