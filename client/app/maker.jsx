@@ -84,7 +84,7 @@ const Intro = (props) => {
 
     const DomoLineup = props.domos.map((domo) => {
         return (
-            <div class="profile">
+            <div className="profile">
                 <h2>Hi, my name is {domo.name}. I am {domo.age} and I love to eat {domo.snack}!</h2>
                 <img src="/assets/img/domosnake.jpeg" alt="domo with snake"/>
             </div>
