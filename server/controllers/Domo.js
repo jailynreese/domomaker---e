@@ -3,14 +3,15 @@ const models = require('../models');
 const { Domo } = models;
 
 const makeDomo = (req, res) => {
-  if (!req.body.name || !req.body.age) {
-    return res.status(400).json({ error: 'RAWR! Both name and age are required.' });
+  if (!req.body.name || !req.body.age || !req.body.snack) {
+    return res.status(400).json({ error: 'RAWR! Name, age, and snack are required.' });
   }
 
   const domoData = {
     name: req.body.name,
     age: req.body.age,
     owner: req.session.account._id,
+    snack: req.body.snack,
   };
 
   const newDomo = new Domo.DomoModel(domoData);
@@ -55,6 +56,25 @@ const getDomos = (request, response) => {
   });
 };
 
+const getDomo = (request, response) => {
+  const req = request;
+  const res = response;
+
+  return Domo.DomoModel.findDomo(
+    req.session.account._id, 
+    req.session.account.name, 
+    req.session.account.age, 
+    (err, docs) => {
+      if (err) {
+        console.log(err);
+        return res.status(400).json({ error: 'An error occurred' });
+      }
+
+    return res.json({ domos: docs });
+  });
+};
+
 module.exports.makerPage = makerPage;
 module.exports.getDomos = getDomos;
+module.exports.getDomo = getDomo;
 module.exports.make = makeDomo;
