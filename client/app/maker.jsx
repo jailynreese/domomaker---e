@@ -55,7 +55,7 @@ const DomoList = function (props) {
                 <h3 className="domoName">Name: {domo.name} </h3>
                 <h3 className="domoAge">Age: {domo.age} </h3>
                 <h3 className="domoSnack">Snack: {domo.snack} </h3>
-                <button onClick={intro(domo)}>Greet</button>
+                <button onClick={(e) => intro(e, domo)}>Greet</button>
             </div>
         );
     });
@@ -67,7 +67,9 @@ const DomoList = function (props) {
     );
 };
 
-const intro = (domo) => {
+const intro = (e, domo) => {
+    e.preventDefault();
+
     sendAjax('GET', '/getDomo', domo ,(data) => {
         ReactDOM.render(
             <div>
@@ -77,6 +79,8 @@ const intro = (domo) => {
             document.querySelector("#intro")
         );
     }); 
+
+    return false;
 }
 
 const loadDomosFromServer = () => {
