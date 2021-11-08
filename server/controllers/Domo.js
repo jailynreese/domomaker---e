@@ -62,8 +62,7 @@ const getDomo = (request, response) => {
 
   return Domo.DomoModel.findDomo(
     req.session.account._id, 
-    req.session.account.name, 
-    req.session.account.age, 
+    req.session.account.name,
     (err, docs) => {
       if (err) {
         console.log(err);

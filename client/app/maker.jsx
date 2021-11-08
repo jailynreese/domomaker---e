@@ -50,6 +50,7 @@ const DomoList = function (props) {
             <div
                 key={domo._id}
                 className="domo"
+                onClick={intro(domo)}
             >
                 <img src="/assets/img/domoface.jpeg" alt="domo face" className="domoFace" />
                 <h3 className="domoName">Name: {domo.name} </h3>
@@ -68,13 +69,15 @@ const DomoList = function (props) {
 };
 
 const intro = (domo) => {
-    ReactDOM.render(
-        <div>
-            <h2>Hi, my name is {domo.name}. I am {domo.age} and I love to eat {domo.snack}!</h2>
-            <img src="/assets/img/domosnake.jpeg" alt="domo with snake"/>
-        </div>,
-        document.querySelector("#intro")
-    );
+    sendAjax('GET', '/getDomo', domo ,(data) => {
+        ReactDOM.render(
+            <div>
+                <h2>Hi, my name is {data.name}. I am {data.age} and I love to eat {data.snack}!</h2>
+                <img src="/assets/img/domosnake.jpeg" alt="domo with snake"/>
+            </div>,
+            document.querySelector("#intro")
+        );
+    }); 
 }
 
 const loadDomosFromServer = () => {
@@ -104,7 +107,5 @@ const getToken = () => {
 };
 
 $(document).ready(function () {
-    ReactDOM.render(<div></div>, document.querySelector("#intro")
-    );
     getToken();
 });

@@ -53,11 +53,10 @@ DomoSchema.statics.findByOwner = (ownerId, callback) => {
   return DomoModel.find(search).select('name age snack').lean().exec(callback);
 };
 
-DomoSchema.statics.findDomo = (ownerId, name, age, callback) => {
+DomoSchema.statics.findDomo = (ownerId, name, callback) => {
   const search = {
     owner: convertId(ownerId),
     name,
-    age,
   };
   return DomoModel.find(search).select('name age snack').lean().exec(callback);
 };
