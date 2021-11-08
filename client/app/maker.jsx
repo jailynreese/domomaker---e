@@ -50,12 +50,12 @@ const DomoList = function (props) {
             <div
                 key={domo._id}
                 className="domo"
-                onClick={intro(domo)}
             >
                 <img src="/assets/img/domoface.jpeg" alt="domo face" className="domoFace" />
                 <h3 className="domoName">Name: {domo.name} </h3>
                 <h3 className="domoAge">Age: {domo.age} </h3>
                 <h3 className="domoSnack">Snack: {domo.snack} </h3>
+                <button onClick={intro(domo)}>Greet</button>
             </div>
         );
     });
