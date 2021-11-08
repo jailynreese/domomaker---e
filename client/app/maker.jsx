@@ -74,7 +74,7 @@ const intro = (domo) => {
     sendAjax('GET', '/getDomo', domo ,(data) => {
         ReactDOM.render(
             <div>
-                <h2>Hi, my name is {domo.name}. I am {domo.age} and I love to eat {domo.snack}!</h2>
+                <h2>Hi, my name is {data.name}. I am {data.age} and I love to eat {data.snack}!</h2>
                 <img src="/assets/img/domosnake.jpeg" alt="domo with snake"/>
             </div>,
             document.querySelector("#intro")
