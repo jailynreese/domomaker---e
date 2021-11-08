@@ -55,13 +55,6 @@ const DomoList = function (props) {
                 <h3 className="domoName">Name: {domo.name} </h3>
                 <h3 className="domoAge">Age: {domo.age} </h3>
                 <h3 className="domoSnack">Snack: {domo.snack} </h3>
-                <button onClick={() => {
-                    sendAjax('GET', '/getDomos', null, (data) => {
-                        ReactDOM.render(
-                            <Intro domos={data.domos} />, document.querySelector("#intro")
-                        );
-                    });
-                }}>Greet</button>
             </div>
         );
     });
@@ -69,6 +62,13 @@ const DomoList = function (props) {
     return (
         <div className="domoList">
             {domoNodes}
+            <button onClick={() => {
+                    sendAjax('GET', '/getDomos', null, (data) => {
+                        ReactDOM.render(
+                            <Intro domos={data.domos} />, document.querySelector("#intro")
+                        );
+                    });
+                }}>Meet the Domos</button>
         </div>
     );
 };
@@ -95,20 +95,6 @@ const Intro = (props) => {
         <div>{DomoLineup}</div>
     );
 };
-
-// const intro = (props) => {
-//     sendAjax('GET', '/getDomo', domo ,(data) => {
-//         ReactDOM.render(
-//             <div>
-//                 <h2>Hi, my name is {domo.name}. I am {domo.age} and I love to eat {domo.snack}!</h2>
-//                 <img src="/assets/img/domosnake.jpeg" alt="domo with snake"/>
-//             </div>,
-//             document.querySelector("#intro")
-//         );
-//     }); 
-
-//     return false;
-// }
 
 const loadDomosFromServer = () => {
     sendAjax('GET', '/getDomos', null, (data) => {
