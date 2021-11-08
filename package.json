@@ -1,6 +1,10 @@
 {
-  "name": "domomaker---e",
+  "name": "Logins",
   "version": "1.0.0",
+  "engines": {
+    "node": "12.16.0",
+    "npm": "6.13.7"
+  },
   "description": "A Simple Login Example using Node.js, Mongo and Redis",
   "main": "./server/app.js",
   "scripts": {
@@ -14,20 +18,21 @@
     "pretest": "eslint ./server --fix",
     "test": "echo \"Tests complete\""
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jailynreese/domomaker---e.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/jailynreese/domomaker---e/issues"
-  },
-  "homepage": "https://github.com/jailynreese/domomaker---e#readme",
+  "keywords": [
+    "Node",
+    "MVC",
+    "Redis",
+    "Login"
+  ],
+  "author": "Cody Van De Mark",
+  "license": "Apache 2.0",
   "devDependencies": {
+    "@babel/cli": "^7.15.7",
     "@babel/compat-data": "^7.16.0",
+    "@babel/core": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
     "@babel/preset-react": "^7.16.0",
-    "eslint": "^8.2.0",
+    "eslint": "^8.1.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-plugin-import": "^2.25.2",
     "nodemon": "^2.0.14"
