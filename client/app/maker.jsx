@@ -58,7 +58,7 @@ const DomoList = function (props) {
                 <button onClick={() => {
                     sendAjax('GET', '/getDomos', null, (data) => {
                         ReactDOM.render(
-                            <Intro domos={data.domos} />, document.querySelector("#domos")
+                            <Intro domos={data.domos} />, document.querySelector("#intro")
                         );
                     });
                 }}>Greet</button>
@@ -83,12 +83,11 @@ const Intro = (props) => {
     }
 
     const DomoLineup = props.domos.map((domo) => {
-        ReactDOM.render(
+        return (
             <div>
                 <h2>Hi, my name is {domo.name}. I am {domo.age} and I love to eat {domo.snack}!</h2>
                 <img src="/assets/img/domosnake.jpeg" alt="domo with snake"/>
-            </div>,
-            document.querySelector("#intro")
+            </div>
         );
     });
 
