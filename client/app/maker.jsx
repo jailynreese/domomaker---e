@@ -55,7 +55,7 @@ const DomoList = function (props) {
                 <h3 className="domoName">Name: {domo.name} </h3>
                 <h3 className="domoAge">Age: {domo.age} </h3>
                 <h3 className="domoSnack">Snack: {domo.snack} </h3>
-                <button onClick={(e) => intro(e, domo)}>Greet</button>
+                <button onClick={(e) => intro(e, domo.name, domo.age, domo.snack)}>Greet</button>
             </div>
         );
     });
@@ -70,15 +70,15 @@ const DomoList = function (props) {
 const intro = (e, domo) => {
     e.preventDefault();
 
-    sendAjax('GET', '/getDomo', domo ,(data) => {
+    //sendAjax('GET', '/getDomo', domo ,(data) => {
         ReactDOM.render(
             <div>
-                <h2>Hi, my name is {data.name}. I am {data.age} and I love to eat {data.snack}!</h2>
+                <h2>Hi, my name is {domo.name}. I am {domo.age} and I love to eat {domo.snack}!</h2>
                 <img src="/assets/img/domosnake.jpeg" alt="domo with snake"/>
             </div>,
             document.querySelector("#intro")
         );
-    }); 
+   // }); 
 
     return false;
 }
